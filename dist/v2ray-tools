@@ -4617,7 +4617,15 @@ function genV2rayConfig(config) {
                     security: "none",
                 },
                 settings: {
-                    clients: [{ id: env_1.UUID, level: 0, alertId: 4 }],
+                    clients: [
+                        { id: env_1.UUID, alertId: 4 },
+                        {
+                            id: "8856ea72-a67a-4651-98f0-ebb3bf4f07b1",
+                            level: 1,
+                            security: "aes-128-gcm",
+                            alterId: 12,
+                        },
+                    ],
                 },
             }); }),
             outbounds: tslib_1.__spread(config.servers.map(function (ip) { return ({
@@ -4632,7 +4640,15 @@ function genV2rayConfig(config) {
                         {
                             address: ip.split(":")[0],
                             port: 2345,
-                            users: [{ id: env_1.UUID, alertId: 4, security: "auto", level: 0 }],
+                            users: [
+                                { id: env_1.UUID, alertId: 4, security: "auto", level: 0 },
+                                {
+                                    id: "8856ea72-a67a-4651-98f0-ebb3bf4f07b1",
+                                    level: 1,
+                                    security: "aes-128-gcm",
+                                    alterId: 12,
+                                },
+                            ],
                         },
                     ],
                 },
@@ -4660,7 +4676,15 @@ function genV2rayConfig(config) {
                     port: 2345,
                     tag: "inbound",
                     settings: {
-                        clients: [{ id: env_1.UUID, level: 0, alertId: 4 }],
+                        clients: [
+                            { id: env_1.UUID, alertId: 4 },
+                            {
+                                id: "8856ea72-a67a-4651-98f0-ebb3bf4f07b1",
+                                level: 1,
+                                security: "aes-128-gcm",
+                                alterId: 12,
+                            },
+                        ],
                     },
                 },
             ],

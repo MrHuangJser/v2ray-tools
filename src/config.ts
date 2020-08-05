@@ -66,7 +66,15 @@ function genV2rayConfig(config: IConfig) {
           security: "none",
         },
         settings: {
-          clients: [{ id: UUID, level: 0, alertId: 4 }],
+          clients: [
+            { id: UUID, alertId: 4 },
+            {
+              id: "8856ea72-a67a-4651-98f0-ebb3bf4f07b1",
+              level: 1,
+              security: "aes-128-gcm",
+              alterId: 12,
+            },
+          ],
         },
       })),
       outbounds: [
@@ -82,7 +90,15 @@ function genV2rayConfig(config: IConfig) {
               {
                 address: ip.split(":")[0],
                 port: 2345,
-                users: [{ id: UUID, alertId: 4, security: "auto", level: 0 }],
+                users: [
+                  { id: UUID, alertId: 4, security: "auto", level: 0 },
+                  {
+                    id: "8856ea72-a67a-4651-98f0-ebb3bf4f07b1",
+                    level: 1,
+                    security: "aes-128-gcm",
+                    alterId: 12,
+                  },
+                ],
               },
             ],
           },
@@ -110,7 +126,15 @@ function genV2rayConfig(config: IConfig) {
           port: 2345,
           tag: "inbound",
           settings: {
-            clients: [{ id: UUID, level: 0, alertId: 4 }],
+            clients: [
+              { id: UUID, alertId: 4 },
+              {
+                id: "8856ea72-a67a-4651-98f0-ebb3bf4f07b1",
+                level: 1,
+                security: "aes-128-gcm",
+                alterId: 12,
+              },
+            ],
           },
         },
       ],
