@@ -26,18 +26,14 @@ program.command("start").action(() => {
 });
 
 program.command("stop").action(() => {
-  const pid = readFileSync(path.resolve("/etc/v2ray/pid")).toString();
-  if (pid) {
-    console.log(`kill -9 ${pid}&&killall /usr/local/share/v2ray/v2ray`);
-    exec(`kill -9 ${pid}&&killall /usr/local/share/v2ray/v2ray`)
-      .on("close", () => {
-        writeFileSync(path.resolve("/etc/v2ray/pid"), "");
-        console.log("v2ray 关闭成功");
-      })
-      .on("error", () => {
-        console.log("v2ray 关闭失败");
-      });
-  }
+  console.log(`killall /usr/local/share/v2ray/v2ray`);
+  exec(`killall /usr/local/share/v2ray/v2ray`)
+    .on("close", () => {
+      console.log("v2ray 关闭成功");
+    })
+    .on("error", () => {
+      console.log("v2ray 关闭失败");
+    });
 });
 
 program.parse();
