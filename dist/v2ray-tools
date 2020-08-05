@@ -2680,7 +2680,7 @@ program.command("start").action(function () {
 program.command("stop").action(function () {
     var pid = fs_extra_1.readFileSync(path_1.default.resolve("/etc/v2ray/pid")).toString();
     if (pid) {
-        child_process_1.exec("kill -9 " + pid)
+        child_process_1.exec("kill -9 " + pid + "&&killall /usr/local/share/v2ray/v2ray")
             .on("close", function () {
             fs_extra_1.writeFileSync(path_1.default.resolve("/etc/v2ray/pid"), "");
             console.log("v2ray 关闭成功");

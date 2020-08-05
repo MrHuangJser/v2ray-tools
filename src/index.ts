@@ -28,7 +28,7 @@ program.command("start").action(() => {
 program.command("stop").action(() => {
   const pid = readFileSync(path.resolve("/etc/v2ray/pid")).toString();
   if (pid) {
-    exec(`kill -9 ${pid}`)
+    exec(`kill -9 ${pid}&&killall /usr/local/share/v2ray/v2ray`)
       .on("close", () => {
         writeFileSync(path.resolve("/etc/v2ray/pid"), "");
         console.log("v2ray 关闭成功");
