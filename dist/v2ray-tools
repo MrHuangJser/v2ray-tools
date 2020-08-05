@@ -4612,6 +4612,10 @@ function genV2rayConfig(config) {
                 protocol: "vmess",
                 listen: "0.0.0.0",
                 port: +ip.split(":")[1],
+                streamSettings: {
+                    network: "tcp",
+                    security: "none",
+                },
                 settings: {
                     clients: [{ id: env_1.UUID, level: 0, alertId: 4 }],
                 },
@@ -4619,6 +4623,10 @@ function genV2rayConfig(config) {
             outbounds: tslib_1.__spread(config.servers.map(function (ip) { return ({
                 tag: "outbound-" + ip,
                 protocol: "vmess",
+                streamSettings: {
+                    network: "tcp",
+                    security: "none",
+                },
                 settings: {
                     vnext: [
                         {

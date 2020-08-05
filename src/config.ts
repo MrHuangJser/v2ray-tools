@@ -61,6 +61,10 @@ function genV2rayConfig(config: IConfig) {
         protocol: "vmess",
         listen: "0.0.0.0",
         port: +ip.split(":")[1],
+        streamSettings: {
+          network: "tcp",
+          security: "none",
+        },
         settings: {
           clients: [{ id: UUID, level: 0, alertId: 4 }],
         },
@@ -69,6 +73,10 @@ function genV2rayConfig(config: IConfig) {
         ...config.servers!.map<IV2rayConfigOutbound>((ip) => ({
           tag: `outbound-${ip}`,
           protocol: "vmess",
+          streamSettings: {
+            network: "tcp",
+            security: "none",
+          },
           settings: {
             vnext: [
               {

@@ -193,10 +193,10 @@ export interface IV2rayConfigOutbound {
 }
 
 export interface IV2rayConfigStreamSetting extends IV2rayConfigTransport {
-  network: "tcp" | "kcp" | "ws" | "http" | "domainsocket" | "quic";
-  security: "none" | "tls";
-  tlsSettings: IV2rayConfigTLSSetting;
-  sockopt: IV2rayConfigSockOption;
+  network?: "tcp" | "kcp" | "ws" | "http" | "domainsocket" | "quic";
+  security?: "none" | "tls";
+  tlsSettings?: IV2rayConfigTLSSetting;
+  sockopt?: IV2rayConfigSockOption;
 }
 
 export interface IV2rayConfigTLSSetting {
