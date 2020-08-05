@@ -53,9 +53,6 @@ function genV2rayConfig(config: IConfig) {
   if (config.isRelay) {
     v2rayConfig = {
       log: { loglevel: "debug" },
-      dns: {
-        servers: ["8.8.8.8", "8.8.4.4"],
-      },
       inbounds: config.servers!.map<IV2rayConfigInbound>((ip) => ({
         tag: `inbound-${ip}`,
         protocol: "vmess",
@@ -66,14 +63,7 @@ function genV2rayConfig(config: IConfig) {
           security: "none",
         },
         settings: {
-          clients: [
-            {
-              id: UUID,
-              level: 1,
-              security: "auto",
-              alterId: 12,
-            },
-          ],
+          clients: [{ id: UUID, alterId: 32 }],
         },
       })),
       outbounds: [
@@ -89,14 +79,7 @@ function genV2rayConfig(config: IConfig) {
               {
                 address: ip.split(":")[0],
                 port: 2345,
-                users: [
-                  {
-                    id: UUID,
-                    level: 1,
-                    security: "auto",
-                    alterId: 12,
-                  },
-                ],
+                users: [{ id: UUID, alterId: 4 }],
               },
             ],
           },
@@ -114,9 +97,6 @@ function genV2rayConfig(config: IConfig) {
   } else {
     v2rayConfig = {
       log: { loglevel: "debug" },
-      dns: {
-        servers: ["8.8.8.8", "8.8.4.4"],
-      },
       inbounds: [
         {
           protocol: "vmess",
@@ -124,14 +104,7 @@ function genV2rayConfig(config: IConfig) {
           port: 2345,
           tag: "inbound",
           settings: {
-            clients: [
-              {
-                id: UUID,
-                level: 1,
-                security: "auto",
-                alterId: 12,
-              },
-            ],
+            clients: [{ id: UUID, alterId: 32 }],
           },
         },
       ],

@@ -4604,9 +4604,6 @@ function genV2rayConfig(config) {
     if (config.isRelay) {
         v2rayConfig = {
             log: { loglevel: "debug" },
-            dns: {
-                servers: ["8.8.8.8", "8.8.4.4"],
-            },
             inbounds: config.servers.map(function (ip) { return ({
                 tag: "inbound-" + ip,
                 protocol: "vmess",
@@ -4617,14 +4614,7 @@ function genV2rayConfig(config) {
                     security: "none",
                 },
                 settings: {
-                    clients: [
-                        {
-                            id: env_1.UUID,
-                            level: 1,
-                            security: "auto",
-                            alterId: 12,
-                        },
-                    ],
+                    clients: [{ id: env_1.UUID, alterId: 32 }],
                 },
             }); }),
             outbounds: tslib_1.__spread(config.servers.map(function (ip) { return ({
@@ -4639,14 +4629,7 @@ function genV2rayConfig(config) {
                         {
                             address: ip.split(":")[0],
                             port: 2345,
-                            users: [
-                                {
-                                    id: env_1.UUID,
-                                    level: 1,
-                                    security: "auto",
-                                    alterId: 12,
-                                },
-                            ],
+                            users: [{ id: env_1.UUID, alterId: 4 }],
                         },
                     ],
                 },
@@ -4664,9 +4647,6 @@ function genV2rayConfig(config) {
     else {
         v2rayConfig = {
             log: { loglevel: "debug" },
-            dns: {
-                servers: ["8.8.8.8", "8.8.4.4"],
-            },
             inbounds: [
                 {
                     protocol: "vmess",
@@ -4674,14 +4654,7 @@ function genV2rayConfig(config) {
                     port: 2345,
                     tag: "inbound",
                     settings: {
-                        clients: [
-                            {
-                                id: env_1.UUID,
-                                level: 1,
-                                security: "auto",
-                                alterId: 12,
-                            },
-                        ],
+                        clients: [{ id: env_1.UUID, alterId: 32 }],
                     },
                 },
             ],
