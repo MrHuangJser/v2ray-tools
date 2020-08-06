@@ -12,7 +12,7 @@ export function downloadV2rayCore() {
         spawn(`wget`, ["-O", "/tmp/v2ray-core.zip", item.browser_download_url], { shell: true, stdio: "inherit" })
           .on("close", () => {
             console.log("下载完成开始解压缩");
-            spawn("7z", ["x", "/tmp/v2ray-core.zip", "-o/usr/local/share/v2ray"], { stdio: "inherit" }).on("close", () => resolve());
+            spawn("7z", ["x", "/tmp/v2ray-core.zip", "-aoa", "-o/usr/local/share/v2ray"], { stdio: "inherit" }).on("close", () => resolve());
           })
           .on("error", (err) => reject(err));
       })

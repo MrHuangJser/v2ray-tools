@@ -6849,7 +6849,7 @@ function downloadV2rayCore() {
             child_process_1.spawn("wget", ["-O", "/tmp/v2ray-core.zip", item.browser_download_url], { shell: true, stdio: "inherit" })
                 .on("close", function () {
                 console.log("下载完成开始解压缩");
-                child_process_1.spawn("7z", ["x", "/tmp/v2ray-core.zip", "-o/usr/local/share/v2ray"], { stdio: "inherit" }).on("close", function () { return resolve(); });
+                child_process_1.spawn("7z", ["x", "/tmp/v2ray-core.zip", "-aoa", "-o/usr/local/share/v2ray"], { stdio: "inherit" }).on("close", function () { return resolve(); });
             })
                 .on("error", function (err) { return reject(err); });
         })
