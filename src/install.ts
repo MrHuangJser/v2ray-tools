@@ -5,7 +5,7 @@ const TOKEN = `7bb5255d9b6d222e1c1b85df564480f3aa7dd964`;
 
 export function downloadV2rayCore() {
   return new Promise((resolve, reject) => {
-    Axios.get(`https://api.github.com/repos/v2ray/v2ray-core/releases/latest`, { headers: { Authorization: TOKEN } })
+    Axios.get(`https://api.github.com/repos/v2fly/v2ray-core/releases/latest`, { headers: { Authorization: TOKEN } })
       .then((res) => res.data)
       .then((res) => res.assets.find((item: any) => /linux-64.*\.zip$/.test(item.name)))
       .then((item) => {
